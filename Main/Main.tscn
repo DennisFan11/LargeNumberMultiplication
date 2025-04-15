@@ -1,0 +1,153 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu21xlq3ds7px"]
+
+[ext_resource type="Script" uid="uid://bdro3eqwiu35x" path="res://Scenes/ui_layer/layer.gd" id="1_83ytx"]
+[ext_resource type="Script" uid="uid://bo4f0e4uk6asc" path="res://Main/main.gd" id="1_amygn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83ytx"]
+resource_local_to_scene = true
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_amygn"]
+Button/font_sizes/font_size = 40
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_amygn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.131406, 0.414419, 0.34156, 1)
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 60
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/UI/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+follow_focus = true
+draw_focus_border = true
+
+[node name="LayerContainers" type="HBoxContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InputLayer" type="PanelContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+script = ExtResource("1_83ytx")
+color = 0
+text = "this is a Line ..."
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="ColorPanel" type="Panel" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15.01)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83ytx")
+
+[node name="HintLine" type="RichTextLabel" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Input numbers:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Line1" type="LineEdit" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "256"
+placeholder_text = "number A"
+
+[node name="Line2" type="LineEdit" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "256"
+placeholder_text = "number B"
+
+[node name="ClearButton" type="Button" parent="CanvasLayer/UI/MarginContainer/ScrollContainer/LayerContainers/InputLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Clear All"
+
+[node name="OutputPanel" type="Panel" parent="CanvasLayer/UI/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -88.0
+offset_right = 286.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_amygn")
+alignment = 1
+
+[node name="DivideButton" type="Button" parent="CanvasLayer/UI/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Divide"
+
+[node name="ConquerButton" type="Button" parent="CanvasLayer/UI/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Conquer"
+
+[node name="MergeButton" type="Button" parent="CanvasLayer/UI/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Merge"
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/UI/ButtonContainer"]
+layout_mode = 2
+
+[node name="UndoButton" type="Button" parent="CanvasLayer/UI/ButtonContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Undo"
+
+[connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/DivideButton" to="." method="_on_divide_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/ConquerButton" to="." method="_on_conquer_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/UndoButton" to="." method="_on_undo_button_button_down"]
