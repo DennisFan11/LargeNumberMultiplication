@@ -58,7 +58,7 @@ layout_mode = 2
 
 [node name="ProcessButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "process"
+text = "Process"
 
 [node name="HSeparator" type="HSeparator" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -77,7 +77,7 @@ placeholder_text = "number B"
 
 [node name="ClearButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "clear"
+text = "Clear"
 
 [node name="HSeparator2" type="HSeparator" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -90,6 +90,15 @@ text = "undo"
 [node name="CameraCenterButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Center Camera"
+
+[node name="MaxMultBitSpin" type="SpinBox" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 62.0
+value = 4.0
+rounded = true
+suffix = "MaxBit"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 40.0
@@ -108,3 +117,4 @@ unique_name_in_owner = true
 [connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/ClearButton" to="." method="_on_clear_button_button_down"]
 [connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/UndoButton" to="." method="_on_undo_button_button_down"]
 [connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/CameraCenterButton" to="." method="_on_camera_center_button_button_down"]
+[connection signal="value_changed" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/MaxMultBitSpin" to="." method="_on_max_mult_bit_spin_value_changed"]

@@ -102,16 +102,18 @@ fit_content = true
 [node name="InPos" type="Control" parent="Control/Panel/Control/AnswerPanel/MarginContainer/Answer"]
 unique_name_in_owner = true
 layout_mode = 1
-anchor_left = 0.519
+anchor_left = 0.501
 anchor_top = -0.348
-anchor_right = 0.519
+anchor_right = 0.501
 anchor_bottom = -0.348
-offset_left = -0.0140076
-offset_top = 0.00400066
-offset_right = -0.0140076
-offset_bottom = 0.00400066
+offset_left = 0.128983
+offset_top = 0.00799942
+offset_right = 0.128983
+offset_bottom = 0.00799942
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/Control"]
+[node name="SubAnswerContainer" type="HBoxContainer" parent="Control/Panel/Control"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -124,11 +126,11 @@ offset_right = 136.0
 offset_bottom = 48.024
 alignment = 1
 
-[node name="Control" type="Control" parent="Control/Panel/Control/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/Panel/Control/SubAnswerContainer"]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 
-[node name="Panel" type="PanelContainer" parent="Control/Panel/Control/HBoxContainer/Control"]
+[node name="Panel" type="PanelContainer" parent="Control/Panel/Control/SubAnswerContainer/Control"]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 1
 anchors_preset = 10
@@ -136,74 +138,40 @@ anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/HBoxContainer/Control/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/SubAnswerContainer/Control/Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="SubA" type="RichTextLabel" parent="Control/Panel/Control/HBoxContainer/Control/Panel/MarginContainer"]
+[node name="SubA" type="RichTextLabel" parent="Control/Panel/Control/SubAnswerContainer/Control/Panel/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "A: 
+text = "[color=yellow]A[/color] = 
 "
 fit_content = true
 
-[node name="OutPosA" type="Control" parent="Control/Panel/Control/HBoxContainer/Control/Panel/MarginContainer/SubA"]
+[node name="OutPosA" type="Control" parent="Control/Panel/Control/SubAnswerContainer/Control/Panel/MarginContainer/SubA"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_left = 0.548
+anchor_top = -0.274
+anchor_right = 0.548
+anchor_bottom = -0.274
+offset_left = -0.00700378
+offset_top = -0.00257874
+offset_right = -0.00700378
+offset_bottom = -0.00257874
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="Control2" type="Control" parent="Control/Panel/Control/HBoxContainer"]
+[node name="Control2" type="Control" parent="Control/Panel/Control/SubAnswerContainer"]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 2
 
-[node name="Panel2" type="PanelContainer" parent="Control/Panel/Control/HBoxContainer/Control2"]
-custom_minimum_size = Vector2(88, 0)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="SubB" type="RichTextLabel" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-bbcode_enabled = true
-text = "B: "
-fit_content = true
-
-[node name="OutPosB" type="Control" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2/MarginContainer/SubB"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control3" type="Control" parent="Control/Panel/Control/HBoxContainer"]
-custom_minimum_size = Vector2(88, 0)
-layout_mode = 2
-
-[node name="Panel3" type="PanelContainer" parent="Control/Panel/Control/HBoxContainer/Control3"]
+[node name="Panel2" type="PanelContainer" parent="Control/Panel/Control/SubAnswerContainer/Control2"]
 custom_minimum_size = Vector2(88, 0)
 layout_mode = 1
 anchors_preset = 10
@@ -211,30 +179,73 @@ anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/SubAnswerContainer/Control2/Panel2"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="SubC" type="RichTextLabel" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3/MarginContainer"]
+[node name="SubB" type="RichTextLabel" parent="Control/Panel/Control/SubAnswerContainer/Control2/Panel2/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "C: "
+text = "[color=yellow]B[/color] = "
 fit_content = true
 
-[node name="OutPosC" type="Control" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3/MarginContainer/SubC"]
+[node name="OutPosB" type="Control" parent="Control/Panel/Control/SubAnswerContainer/Control2/Panel2/MarginContainer/SubB"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_left = 0.494
+anchor_top = -0.313
+anchor_right = 0.494
+anchor_bottom = -0.313
+offset_left = -0.0110016
+offset_top = 0.0114212
+offset_right = -0.0110016
+offset_bottom = 0.0114212
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+
+[node name="Control3" type="Control" parent="Control/Panel/Control/SubAnswerContainer"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Panel3" type="PanelContainer" parent="Control/Panel/Control/SubAnswerContainer/Control3"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/SubAnswerContainer/Control3/Panel3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SubC" type="RichTextLabel" parent="Control/Panel/Control/SubAnswerContainer/Control3/Panel3/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "[color=yellow]C[/color] = "
+fit_content = true
+
+[node name="OutPosC" type="Control" parent="Control/Panel/Control/SubAnswerContainer/Control3/Panel3/MarginContainer/SubC"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.548
+anchor_top = -0.313
+anchor_right = 0.548
+anchor_bottom = -0.313
+offset_left = -0.00700378
+offset_top = 0.0114212
+offset_right = -0.00700378
+offset_bottom = 0.0114212
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(7.62939e-06, -3.8147e-06)

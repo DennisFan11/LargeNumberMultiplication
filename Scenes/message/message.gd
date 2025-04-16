@@ -6,3 +6,7 @@ func send_message(text:String):
 	await get_tree().process_frame
 	await get_tree().process_frame
 	%ScrollContainer.ensure_control_visible(node)
+
+func clear():
+	for i in %VBoxContainer.get_children():
+		i.queue_free()

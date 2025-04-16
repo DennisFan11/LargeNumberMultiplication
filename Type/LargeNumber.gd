@@ -60,19 +60,34 @@ static func shift(a: LargeNumber, k: int) -> LargeNumber:
 
 # === 一位乘法 ===
 static func mult(a: LargeNumber, b: LargeNumber) -> LargeNumber:
-	var num = LargeNumber.new()
+	var result = LargeNumber.new()
+	var arr:Array[int] = []
 
-	# 僅允許一位數乘法（低階處理）
-	if a.data.size() != 1 or b.data.size() != 1:
-		#push_error("LargeNumber.mult 只支援一位數乘法")
-		return null
+	# 初始化結果陣列長度（最大長度不會超過 a+b 長度）
+	arr.resize(a.data.size() + b.data.size())
+	for i in range(arr.size()):
+		arr[i] = 0
 
-	var product = a.data[0] * b.data[0]
-	var arr:Array[int] = [product]
-	num.data = arr  # 直接儲存，讓 normalize 處理進位
-	num.sign = a.sign * b.sign
-	num.normalize()
-	return num
+	for i in range(a.data.size()):
+		for j in range(b.data.size()):
+			arr[i + j] += a.data[i] * b.data[j]
+
+	# 處理進位
+	for i in range(arr.size() - 1):
+		if arr[i] >= 10:
+			arr[i + 1] += arr[i] / 10
+			arr[i] %= 10
+
+	# 處理最後一位的進位（可能會再多一位）
+	if arr[arr.size() - 1] >= 10:
+		arr.append(arr[arr.size() - 1] / 10)
+		arr[arr.size() - 2] %= 10
+
+	result.data = arr
+	result.sign = a.sign * b.sign
+	result.normalize()
+	return result
+
 
 func slice(start: int, end: int) -> LargeNumber:
 	var result = LargeNumber.new()

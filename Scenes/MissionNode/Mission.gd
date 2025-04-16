@@ -44,13 +44,15 @@ var answer:LargeNumber # CONQUERED
 func get_InPos(): return %InPos
 
 func update_formula():
-	%Formula.text = a._to_string() + " x " + b._to_string() + "=>\nA × 10^(2s) + (C − A − B) × 10^s + B\n========================\n"
+	%Formula.text = "[color=yellow]Mission: [/color]"+_mult_to_string(a, b) + \
+		"\n=> [b]A[/b] × 10^(2s) + ([b]C[/b] − [b]A[/b] − [b]B[/b]) × 10^s + [b]B[/b]\n========================\n"
 
+static var max_mult_bit:int = 1
 func handle()-> bool:
 	match state:
 		IDLE:
 			var n = max(a.data.size(), b.data.size()) # 判斷長度
-			if n == 1: _KaratsubaConquer()
+			if n <= max_mult_bit: _KaratsubaConquer()
 			else: _KaratsubaDivide()
 			
 		WAITING:
@@ -100,6 +102,7 @@ static func CreateNewMission(numA, numB, Shift=0): # TODO
 ## 分割出子任務
 func _KaratsubaDivide():
 	# 判斷長度（以 a 為主）
+	%SubAnswerContainer.visible = true
 	var n = max(a.data.size(), b.data.size())
 	var m = n / 2
 
@@ -121,12 +124,14 @@ func _KaratsubaDivide():
 	)
 	shift = m
 	state = WAITING
-	MessageManager.send_message("[color=yellow]Divide [/color](" + a.to_string() + ") [color=red]x[/color] (" + b.to_string() + ")")
+	MessageManager.send_message(
+		"[color=yellow]Divide [/color]" + _mult_to_string(a, b)
+	)
 	update_formula()
 	%Formula.text += \
-		"A = " + sub_missionA.a.to_string() + " x " + sub_missionA.b.to_string() + "\n" +\
-		"B = " + sub_missionB.a.to_string() + " x " + sub_missionB.b.to_string() + "\n" +\
-		"C = " + sub_missionC.a.to_string() + " x " + sub_missionC.b.to_string() + "\n"
+		"[color=yellow]A[/color] = " + _mult_to_string(sub_missionA.a, sub_missionA.b) + "\n" +\
+		"[color=yellow]B[/color] = " + _mult_to_string(sub_missionB.a, sub_missionB.b) + "\n" +\
+		"[color=yellow]C[/color] = " + _mult_to_string(sub_missionC.a, sub_missionC.b) + "\n"
 
 ## 基底情況：進行單位乘法
 func _KaratsubaConquer():
@@ -134,7 +139,9 @@ func _KaratsubaConquer():
 	answer.normalize()
 	state = CONQUERED
 	%Answer.text = "Answer: " + answer._to_string()
-	MessageManager.send_message("[color=yellow]Conquer: [/color]" + answer.to_string())
+	MessageManager.send_message(
+		"[color=yellow]Conquer: [/color]" + _mult_to_string(a, b) + " = "+ answer.to_string()
+	)
 
 ## 合併 add and shift 
 func _KaratsubaMerge():
@@ -153,12 +160,15 @@ func _KaratsubaMerge():
 
 	answer.normalize()
 	state = CONQUERED
-	%SubA.text = "A: " + _a._to_string()
-	%SubB.text = "B: " + _b._to_string()
-	%SubC.text = "C: " + _c._to_string()
+	%SubA.text = "[color=yellow]A[/color] = " + _a._to_string()
+	%SubB.text = "[color=yellow]B[/color] = " + _b._to_string()
+	%SubC.text = "[color=yellow]C[/color] = " + _c._to_string()
 	%Answer.text = "Answer: " + answer._to_string()
 	MessageManager.send_message("[color=yellow]Merge: [/color]" + answer.to_string())
 	
+
+func _mult_to_string(A:LargeNumber, B:LargeNumber)-> String:
+	return "( " + A._to_string()+ ") [color=red]x[/color] (" + B._to_string() + " )"
 
 ## Debug 用：顯示
 #func _to_string() -> String:

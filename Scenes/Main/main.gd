@@ -7,6 +7,7 @@ extends Node2D
 func _ready() -> void:
 	Mission.add_to_tree = func(node): %TargetNode.add_child(node)
 	Mission.add_link_to_tree = func(node): %LinkTargetNode.add_child(node)
+	Mission.max_mult_bit = %MaxMultBitSpin.value
 
 #region PROCESS 代码区域
 func _process(delta: float) -> void:
@@ -67,8 +68,11 @@ func handle():
 		_root.handle()
 		_node_move(_root)
 	else:
-		_root = Mission.CreateNewMission( %LineEditA.text, %LineEditB.text )
-		_node_move(_root)
+		if %LineEditA.text.is_valid_int() and  %LineEditB.text.is_valid_int():
+			_root = Mission.CreateNewMission( %LineEditA.text, %LineEditB.text )
+			_node_move(_root)
+		else:
+			MessageManager.send_message("[color=red]input not valid")
 	_on_camera_center_button_button_down()
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -88,13 +92,14 @@ func _on_process_button_button_down() -> void:
 
 
 func _on_clear_button_button_down() -> void:
-	%LineEditA.text = ""
-	%LineEditB.text = ""
+	#%LineEditA.text = ""
+	#%LineEditB.text = ""
 	for i in %TargetNode.get_children():
 		i.queue_free()
 	for i in %LinkTargetNode.get_children():
 		i.queue_free()
 	_root = null
+	MessageManager.clear()
 
 
 func _on_undo_button_button_down() -> void:
@@ -102,4 +107,8 @@ func _on_undo_button_button_down() -> void:
 
 
 func _on_camera_center_button_button_down() -> void:
-	_camera_target_pos = _root.position
+	_camera_target_pos.x = _root.position.x
+
+
+func _on_max_mult_bit_spin_value_changed(value: float) -> void:
+	Mission.max_mult_bit = value
