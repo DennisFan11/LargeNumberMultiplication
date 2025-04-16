@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://beaorchfk6iql"]
+
+[ext_resource type="Script" uid="uid://crkeeurba5e1l" path="res://Scenes/MissionNode/Link/link.gd" id="1_fn0od"]
+
+[node name="Link" type="Line2D"]
+script = ExtResource("1_fn0od")

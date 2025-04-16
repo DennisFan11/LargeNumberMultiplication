@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cu21xlq3ds7px"]
 
-[ext_resource type="Script" uid="uid://bdro3eqwiu35x" path="res://Scenes/ui_layer/layer.gd" id="1_83ytx"]
-[ext_resource type="Script" uid="uid://bo4f0e4uk6asc" path="res://Main/main.gd" id="1_amygn"]
+[ext_resource type="Script" uid="uid://bdro3eqwiu35x" path="res://_trash_can/ui_layer/layer.gd" id="1_83ytx"]
+[ext_resource type="Script" uid="uid://bo4f0e4uk6asc" path="res://_trash_can/Main/main.gd" id="1_amygn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83ytx"]
 resource_local_to_scene = true
@@ -12,7 +12,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="Theme" id="Theme_amygn"]
-Button/font_sizes/font_size = 40
+Button/font_sizes/font_size = 25
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_amygn")
@@ -61,8 +61,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 script = ExtResource("1_83ytx")
-color = 0
-text = "this is a Line ..."
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -150,4 +148,5 @@ text = "Undo"
 
 [connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/DivideButton" to="." method="_on_divide_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/ConquerButton" to="." method="_on_conquer_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/MergeButton" to="." method="_on_merge_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/UI/ButtonContainer/UndoButton" to="." method="_on_undo_button_button_down"]

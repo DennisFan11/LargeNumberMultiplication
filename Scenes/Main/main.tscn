@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3 uid="uid://pftws4lw5ryg"]
+
+[ext_resource type="Script" uid="uid://dxujtm08x2fc4" path="res://Scenes/Main/main.gd" id="1_1r6ip"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1r6ip")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.415686, 0.341176, 1)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UILayer"]
+layout_mode = 3
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="UILayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 986.0
+offset_top = 34.0
+offset_right = -16.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Control/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ProcessButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "process"
+
+[node name="HSeparator" type="HSeparator" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEditA" type="LineEdit" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "12352145261235214526123521452612352145261235214526123521452612352145261235214526123521452612352145261235214526123521452622235468"
+placeholder_text = "number A"
+
+[node name="LineEditB" type="LineEdit" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "12352145261235214526123521452612352145261235214526123521452612352145261235214526123521452612352145261235214526123521452622235468"
+placeholder_text = "number B"
+
+[node name="ClearButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "clear"
+
+[node name="HSeparator2" type="HSeparator" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="UndoButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "undo"
+
+[node name="CameraCenterButton" type="Button" parent="UILayer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Center Camera"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LinkTargetNode" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="TargetNode" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/ProcessButton" to="." method="_on_process_button_button_down"]
+[connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/ClearButton" to="." method="_on_clear_button_button_down"]
+[connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/UndoButton" to="." method="_on_undo_button_button_down"]
+[connection signal="button_down" from="UILayer/Control/Panel/MarginContainer/VBoxContainer/CameraCenterButton" to="." method="_on_camera_center_button_button_down"]

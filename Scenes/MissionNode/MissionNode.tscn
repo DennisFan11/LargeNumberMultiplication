@@ -1,0 +1,238 @@
+[gd_scene load_steps=5 format=3 uid="uid://oju68vtkyqat"]
+
+[ext_resource type="Script" uid="uid://bj284guw1p625" path="res://Scenes/MissionNode/Mission.gd" id="1_rw4sq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw4sq"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_size = 3
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5v6k"]
+bg_color = Color(0.201527, 0.201527, 0.201526, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_size = 3
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="Theme" id="Theme_rw4sq"]
+Panel/styles/panel = SubResource("StyleBoxFlat_p5v6k")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_p5v6k")
+
+[node name="MissionNode" type="Node2D"]
+script = ExtResource("1_rw4sq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="PanelContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -36.0
+offset_right = 146.91
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rw4sq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+custom_minimum_size = Vector2(380.68, 122.45)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Formula" type="RichTextLabel" parent="Control/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Formulas:  "
+fit_content = true
+
+[node name="Control" type="Control" parent="Control/Panel"]
+layout_mode = 2
+theme = SubResource("Theme_rw4sq")
+
+[node name="AnswerPanel" type="PanelContainer" parent="Control/Panel/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -193.34
+offset_top = -69.0
+offset_right = 191.66
+offset_bottom = -9.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/AnswerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Answer" type="RichTextLabel" parent="Control/Panel/Control/AnswerPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Answer: "
+fit_content = true
+
+[node name="InPos" type="Control" parent="Control/Panel/Control/AnswerPanel/MarginContainer/Answer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.519
+anchor_top = -0.348
+anchor_right = 0.519
+anchor_bottom = -0.348
+offset_left = -0.0140076
+offset_top = 0.00400066
+offset_right = -0.0140076
+offset_bottom = 0.00400066
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.048
+anchor_right = 0.5
+anchor_bottom = 1.048
+offset_left = -136.0
+offset_top = 8.02399
+offset_right = 136.0
+offset_bottom = 48.024
+alignment = 1
+
+[node name="Control" type="Control" parent="Control/Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="Control/Panel/Control/HBoxContainer/Control"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/HBoxContainer/Control/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SubA" type="RichTextLabel" parent="Control/Panel/Control/HBoxContainer/Control/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "A: 
+"
+fit_content = true
+
+[node name="OutPosA" type="Control" parent="Control/Panel/Control/HBoxContainer/Control/Panel/MarginContainer/SubA"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Control/Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Panel2" type="PanelContainer" parent="Control/Panel/Control/HBoxContainer/Control2"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SubB" type="RichTextLabel" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "B: "
+fit_content = true
+
+[node name="OutPosB" type="Control" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2/MarginContainer/SubB"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control3" type="Control" parent="Control/Panel/Control/HBoxContainer"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 2
+
+[node name="Panel3" type="PanelContainer" parent="Control/Panel/Control/HBoxContainer/Control3"]
+custom_minimum_size = Vector2(88, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="SubC" type="RichTextLabel" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "C: "
+fit_content = true
+
+[node name="OutPosC" type="Control" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3/MarginContainer/SubC"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(7.62939e-06, -3.8147e-06)
+scale = Vector2(15.2, 8)

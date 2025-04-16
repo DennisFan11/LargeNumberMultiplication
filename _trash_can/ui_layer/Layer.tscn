@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://coykf1220ytuv"]
 
-[ext_resource type="Script" uid="uid://bdro3eqwiu35x" path="res://Scenes/ui_layer/layer.gd" id="1_ig7lo"]
+[ext_resource type="Script" uid="uid://bdro3eqwiu35x" path="res://_trash_can/ui_layer/layer.gd" id="1_ig7lo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7lo"]
 resource_local_to_scene = true

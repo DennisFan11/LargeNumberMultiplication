@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://lmk6ax60x828"]
+
+[node name="Richtext" type="RichTextLabel"]
+custom_minimum_size = Vector2(500, 0)
+bbcode_enabled = true
+text = "hello hello hello hello hello hello hello hello
+ hello hello hello hello
+hello hello hello hello
+hello hello hello hello
+hello hello hello hello
+
+hello hello hello hellohello hello hello hello"
+fit_content = true
+scroll_active = false
