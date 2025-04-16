@@ -70,11 +70,24 @@ bbcode_enabled = true
 text = "Formulas:  "
 fit_content = true
 
+[node name="InPos" type="Control" parent="Control/Panel/MarginContainer/Formula"]
+unique_name_in_owner = true
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = -0.127
+anchor_right = 0.5
+anchor_bottom = -0.127
+offset_top = -0.0459995
+offset_bottom = -0.0459995
+
 [node name="Control" type="Control" parent="Control/Panel"]
 layout_mode = 2
 theme = SubResource("Theme_rw4sq")
 
 [node name="AnswerPanel" type="PanelContainer" parent="Control/Panel/Control"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -96,20 +109,8 @@ theme_override_constants/margin_bottom = 5
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
-text = "Answer: "
+text = "[color=yellow]Answer: "
 fit_content = true
-
-[node name="InPos" type="Control" parent="Control/Panel/Control/AnswerPanel/MarginContainer/Answer"]
-unique_name_in_owner = true
-layout_mode = 1
-anchor_left = 0.501
-anchor_top = -0.348
-anchor_right = 0.501
-anchor_bottom = -0.348
-offset_left = 0.128983
-offset_top = 0.00799942
-offset_right = 0.128983
-offset_bottom = 0.00799942
 
 [node name="SubAnswerContainer" type="HBoxContainer" parent="Control/Panel/Control"]
 unique_name_in_owner = true
@@ -157,13 +158,13 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.548
-anchor_top = -0.274
+anchor_top = -0.005
 anchor_right = 0.548
-anchor_bottom = -0.274
+anchor_bottom = -0.005
 offset_left = -0.00700378
-offset_top = -0.00257874
-offset_right = -0.00700378
-offset_bottom = -0.00257874
+offset_top = 0.00342168
+offset_right = -0.0070076
+offset_bottom = 0.00342168
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -197,13 +198,13 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.494
-anchor_top = -0.313
+anchor_top = -0.005
 anchor_right = 0.494
-anchor_bottom = -0.313
+anchor_bottom = -0.005
 offset_left = -0.0110016
-offset_top = 0.0114212
+offset_top = 0.00342168
 offset_right = -0.0110016
-offset_bottom = 0.0114212
+offset_bottom = 0.00342168
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -237,13 +238,12 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.548
-anchor_top = -0.313
+anchor_top = -0.005
 anchor_right = 0.548
-anchor_bottom = -0.313
 offset_left = -0.00700378
-offset_top = 0.0114212
-offset_right = -0.00700378
-offset_bottom = 0.0114212
+offset_top = 0.00342168
+offset_right = -0.0070076
+offset_bottom = -0.126578
 grow_horizontal = 2
 grow_vertical = 0
 

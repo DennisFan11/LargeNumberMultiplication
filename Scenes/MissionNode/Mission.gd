@@ -39,13 +39,16 @@ var sub_missionC:Mission: # WAITING
 		node.Missions = [%OutPosC, new.get_InPos()]
 
 
-var answer:LargeNumber # CONQUERED
-
+var answer:LargeNumber: # CONQUERED
+	set(new):
+		answer = new
+		%AnswerPanel.visible = true
 func get_InPos(): return %InPos
 
 func update_formula():
 	%Formula.text = "[color=yellow]Mission: [/color]"+_mult_to_string(a, b) + \
-		"\n=> [b]A[/b] × 10^(2s) + ([b]C[/b] − [b]A[/b] − [b]B[/b]) × 10^s + [b]B[/b]\n========================\n"
+		"\n========================"
+		
 
 static var max_mult_bit:int = 1
 func handle()-> bool:
@@ -129,19 +132,22 @@ func _KaratsubaDivide():
 	)
 	update_formula()
 	%Formula.text += \
+		"\n=> [b]A[/b] × 10^(2s) + ([b]C[/b] − [b]A[/b] − [b]B[/b]) × 10^s + [b]B[/b]\n" + \
 		"[color=yellow]A[/color] = " + _mult_to_string(sub_missionA.a, sub_missionA.b) + "\n" +\
 		"[color=yellow]B[/color] = " + _mult_to_string(sub_missionB.a, sub_missionB.b) + "\n" +\
 		"[color=yellow]C[/color] = " + _mult_to_string(sub_missionC.a, sub_missionC.b) + "\n"
+	ParticleText.spawn("[font_size=150][color=yellow]Divide ![/color]", self)
 
 ## 基底情況：進行單位乘法
 func _KaratsubaConquer():
 	answer = LargeNumber.mult(a, b)
 	answer.normalize()
 	state = CONQUERED
-	%Answer.text = "Answer: " + answer._to_string()
+	%Answer.text = "[color=yellow]Answer: [/color]" + answer._to_string()
 	MessageManager.send_message(
 		"[color=yellow]Conquer: [/color]" + _mult_to_string(a, b) + " = "+ answer.to_string()
 	)
+	ParticleText.spawn("[font_size=150][color=yellow]Conquer ![/color]", self)
 
 ## 合併 add and shift 
 func _KaratsubaMerge():
@@ -163,8 +169,9 @@ func _KaratsubaMerge():
 	%SubA.text = "[color=yellow]A[/color] = " + _a._to_string()
 	%SubB.text = "[color=yellow]B[/color] = " + _b._to_string()
 	%SubC.text = "[color=yellow]C[/color] = " + _c._to_string()
-	%Answer.text = "Answer: " + answer._to_string()
+	%Answer.text = "[color=yellow]Answer: [/color]" + answer._to_string()
 	MessageManager.send_message("[color=yellow]Merge: [/color]" + answer.to_string())
+	ParticleText.spawn("[font_size=150][color=yellow]Merge ![/color]", self)
 	
 
 func _mult_to_string(A:LargeNumber, B:LargeNumber)-> String:
