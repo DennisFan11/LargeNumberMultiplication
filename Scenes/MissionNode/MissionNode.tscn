@@ -154,6 +154,7 @@ fit_content = true
 [node name="OutPosA" type="Control" parent="Control/Panel/Control/HBoxContainer/Control/Panel/MarginContainer/SubA"]
 unique_name_in_owner = true
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -190,6 +191,7 @@ fit_content = true
 [node name="OutPosB" type="Control" parent="Control/Panel/Control/HBoxContainer/Control2/Panel2/MarginContainer/SubB"]
 unique_name_in_owner = true
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -226,6 +228,7 @@ fit_content = true
 [node name="OutPosC" type="Control" parent="Control/Panel/Control/HBoxContainer/Control3/Panel3/MarginContainer/SubC"]
 unique_name_in_owner = true
 layout_mode = 1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
