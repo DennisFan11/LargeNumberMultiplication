@@ -8,6 +8,7 @@ func _ready() -> void:
 	Mission.add_to_tree = func(node): %TargetNode.add_child(node)
 	Mission.add_link_to_tree = func(node): %LinkTargetNode.add_child(node)
 	Mission.max_mult_bit = %MaxMultBitSpin.value
+	get_viewport().files_dropped.connect(on_files_dropped)
 
 #region PROCESS 代码区域
 func _process(delta: float) -> void:
@@ -112,3 +113,25 @@ func _on_camera_center_button_button_down() -> void:
 
 func _on_max_mult_bit_spin_value_changed(value: float) -> void:
 	Mission.max_mult_bit = value
+
+
+func on_files_dropped(files):
+	print(files)
+	var arr = open_text_file(files[0])
+	%LineEditA.text = arr[0]
+	%LineEditB.text = arr[1]
+
+
+func open_text_file(path: String):
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		print("打开文件失败: ", FileAccess.get_open_error())
+		return
+	
+	var content = file.get_as_text()
+	file.close()
+	print("文件内容: ", content)
+	content = content.replace("\r", "")
+	content = content.split("\n")
+	print("文件内容: ", content)
+	return content
